@@ -54,7 +54,7 @@ namespace Laba4 {
 
 
 	private: System::Windows::Forms::Button^ button_download;
-	private: System::Windows::Forms::Button^ button_search;
+
 	private: System::Windows::Forms::Button^ button_exit;
 	private: System::Windows::Forms::Button^ button_info;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
@@ -62,6 +62,8 @@ namespace Laba4 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::Button^ button_search;
+
 
 
 
@@ -117,8 +119,7 @@ namespace Laba4 {
 			// 
 			// dataGridView1
 			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
 			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
@@ -138,7 +139,7 @@ namespace Laba4 {
 			});
 			this->dataGridView1->Location = System::Drawing::Point(19, 95);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(543, 442);
+			this->dataGridView1->Size = System::Drawing::Size(546, 442);
 			this->dataGridView1->TabIndex = 3;
 			// 
 			// id
@@ -308,8 +309,10 @@ namespace Laba4 {
 		}
 #pragma endregion
 	private: System::Void button_download_Click(System::Object^ sender, System::EventArgs^ e);
-	
-private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e);
+
+     private:System::Void searchTextBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
+
+	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e);
 
 private: System::Void button_update_Click(System::Object^ sender, System::EventArgs^ e);
 
