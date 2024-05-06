@@ -35,43 +35,29 @@ namespace Laba4 {
 				delete components;
 			}
 		}
-
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	protected:
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 
-
-
-
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::Button^ button_delet;
-	private: System::Windows::Forms::Button^ button_update;
-
-
-
-	private: System::Windows::Forms::Button^ button_add;
-
-
-
-	private: System::Windows::Forms::Button^ button_download;
 
 	private: System::Windows::Forms::Button^ button_exit;
 	private: System::Windows::Forms::Button^ button_info;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::Button^ button_search;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
 
 
 
-
-
-
-
-
-
+	private: System::Windows::Forms::ToolTip^ ToolTip;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ panel3;
+	private: System::Windows::Forms::Panel^ panel4;
+	private: System::Windows::Forms::Panel^ panel2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Panel^ panel5;
+	private: System::Windows::Forms::Panel^ panel6;
+	private: System::Windows::Forms::Panel^ panel7;
+	private: System::Windows::Forms::Panel^ panel8;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -90,241 +76,222 @@ namespace Laba4 {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button_search = (gcnew System::Windows::Forms::Button());
-			this->button_delet = (gcnew System::Windows::Forms::Button());
-			this->button_update = (gcnew System::Windows::Forms::Button());
-			this->button_add = (gcnew System::Windows::Forms::Button());
-			this->button_download = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
 			this->button_info = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->ToolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->panel4 = (gcnew System::Windows::Forms::Panel());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->panel7 = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
+			this->panel1->SuspendLayout();
+			this->panel3->SuspendLayout();
+			this->panel5->SuspendLayout();
+			this->panel6->SuspendLayout();
 			this->SuspendLayout();
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(824, 24);
+			this->menuStrip1->TabIndex = 0;
+			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// contextMenuStrip1
 			// 
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
-			// dataGridView1
-			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::Gray;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::Gray;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::Gray;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->id, this->Column1,
-					this->Column2, this->Column3, this->Column4
-			});
-			this->dataGridView1->Location = System::Drawing::Point(19, 95);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(546, 442);
-			this->dataGridView1->TabIndex = 3;
-			// 
-			// id
-			// 
-			this->id->HeaderText = L"id";
-			this->id->Name = L"id";
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Название";
-			this->Column1->Name = L"Column1";
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Расположение";
-			this->Column2->Name = L"Column2";
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Телефон";
-			this->Column3->Name = L"Column3";
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Веб-сайт";
-			this->Column4->Name = L"Column4";
-			// 
 			// groupBox1
 			// 
-			this->groupBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"groupBox1.BackgroundImage")));
-			this->groupBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->groupBox1->Controls->Add(this->button_search);
-			this->groupBox1->Controls->Add(this->button_delet);
-			this->groupBox1->Controls->Add(this->button_update);
-			this->groupBox1->Controls->Add(this->button_add);
-			this->groupBox1->Controls->Add(this->button_download);
-			this->groupBox1->Cursor = System::Windows::Forms::Cursors::Default;
-			this->groupBox1->Location = System::Drawing::Point(19, 8);
+			this->groupBox1->Controls->Add(this->button2);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Location = System::Drawing::Point(13, 0);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(809, 81);
+			this->groupBox1->Size = System::Drawing::Size(798, 81);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Дейсвия";
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &MyForm::groupBox1_Enter);
 			// 
-			// button_search
+			// button2
 			// 
-			this->button_search->BackColor = System::Drawing::Color::Gray;
-			this->button_search->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_search->ForeColor = System::Drawing::Color::White;
-			this->button_search->Location = System::Drawing::Point(646, 18);
-			this->button_search->Name = L"button_search";
-			this->button_search->Size = System::Drawing::Size(137, 53);
-			this->button_search->TabIndex = 4;
-			this->button_search->Text = L"Поиск";
-			this->button_search->UseVisualStyleBackColor = false;
-			this->button_search->Click += gcnew System::EventHandler(this, &MyForm::button_search_Click);
+			this->button2->Location = System::Drawing::Point(210, 19);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(156, 54);
+			this->button2->TabIndex = 1;
+			this->button2->Text = L"Представления";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
-			// button_delet
+			// button1
 			// 
-			this->button_delet->BackColor = System::Drawing::Color::Gray;
-			this->button_delet->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_delet->ForeColor = System::Drawing::Color::White;
-			this->button_delet->Location = System::Drawing::Point(489, 18);
-			this->button_delet->Name = L"button_delet";
-			this->button_delet->Size = System::Drawing::Size(137, 53);
-			this->button_delet->TabIndex = 3;
-			this->button_delet->Text = L"Удалить";
-			this->button_delet->UseVisualStyleBackColor = false;
-			this->button_delet->Click += gcnew System::EventHandler(this, &MyForm::button_delet_Click);
-			// 
-			// button_update
-			// 
-			this->button_update->BackColor = System::Drawing::Color::Gray;
-			this->button_update->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_update->ForeColor = System::Drawing::Color::White;
-			this->button_update->Location = System::Drawing::Point(333, 18);
-			this->button_update->Name = L"button_update";
-			this->button_update->Size = System::Drawing::Size(137, 53);
-			this->button_update->TabIndex = 2;
-			this->button_update->Text = L"Обновить";
-			this->button_update->UseVisualStyleBackColor = false;
-			this->button_update->Click += gcnew System::EventHandler(this, &MyForm::button_update_Click);
-			// 
-			// button_add
-			// 
-			this->button_add->BackColor = System::Drawing::Color::Gray;
-			this->button_add->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_add->ForeColor = System::Drawing::Color::White;
-			this->button_add->Location = System::Drawing::Point(178, 18);
-			this->button_add->Name = L"button_add";
-			this->button_add->Size = System::Drawing::Size(137, 53);
-			this->button_add->TabIndex = 1;
-			this->button_add->Text = L"Добавить";
-			this->button_add->UseVisualStyleBackColor = false;
-			this->button_add->Click += gcnew System::EventHandler(this, &MyForm::button_add_Click);
-			// 
-			// button_download
-			// 
-			this->button_download->BackColor = System::Drawing::Color::Gray;
-			this->button_download->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->button_download->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_download->ForeColor = System::Drawing::Color::White;
-			this->button_download->Location = System::Drawing::Point(23, 18);
-			this->button_download->Name = L"button_download";
-			this->button_download->Size = System::Drawing::Size(137, 53);
-			this->button_download->TabIndex = 0;
-			this->button_download->Text = L"Загрузить";
-			this->button_download->UseVisualStyleBackColor = false;
-			this->button_download->Click += gcnew System::EventHandler(this, &MyForm::button_download_Click);
+			this->button1->Location = System::Drawing::Point(24, 19);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(156, 54);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Информация о театрах";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button_exit
 			// 
-			this->button_exit->BackColor = System::Drawing::Color::Gray;
-			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_exit->ForeColor = System::Drawing::Color::White;
-			this->button_exit->Location = System::Drawing::Point(19, 543);
+			this->button_exit->Location = System::Drawing::Point(19, 525);
 			this->button_exit->Name = L"button_exit";
-			this->button_exit->Size = System::Drawing::Size(127, 46);
+			this->button_exit->Size = System::Drawing::Size(127, 31);
 			this->button_exit->TabIndex = 5;
 			this->button_exit->Text = L"Выйти из программы";
-			this->button_exit->UseVisualStyleBackColor = false;
+			this->button_exit->UseVisualStyleBackColor = true;
 			this->button_exit->Click += gcnew System::EventHandler(this, &MyForm::button_exit_Click);
 			// 
 			// button_info
 			// 
-			this->button_info->BackColor = System::Drawing::Color::Gray;
-			this->button_info->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button_info->ForeColor = System::Drawing::Color::White;
-			this->button_info->Location = System::Drawing::Point(152, 543);
+			this->button_info->Location = System::Drawing::Point(152, 525);
 			this->button_info->Name = L"button_info";
-			this->button_info->Size = System::Drawing::Size(176, 46);
+			this->button_info->Size = System::Drawing::Size(176, 31);
 			this->button_info->TabIndex = 6;
 			this->button_info->Text = L"Информация о программе";
-			this->button_info->UseVisualStyleBackColor = false;
+			this->button_info->UseVisualStyleBackColor = true;
 			this->button_info->Click += gcnew System::EventHandler(this, &MyForm::button_info_Click);
+			// 
+			// ToolTip
+			// 
+			this->ToolTip->Popup += gcnew System::Windows::Forms::PopupEventHandler(this, &MyForm::ToolTip_Popup);
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::SystemColors::Highlight;
+			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->panel3);
+			this->panel1->Controls->Add(this->panel2);
+			this->panel1->Location = System::Drawing::Point(53, 126);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(250, 250);
+			this->panel1->TabIndex = 7;
+			// 
+			// panel2
+			// 
+			this->panel2->Location = System::Drawing::Point(271, 0);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(265, 300);
+			this->panel2->TabIndex = 8;
+			// 
+			// panel3
+			// 
+			this->panel3->Controls->Add(this->panel4);
+			this->panel3->Location = System::Drawing::Point(268, 0);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(265, 300);
+			this->panel3->TabIndex = 9;
+			// 
+			// panel4
+			// 
+			this->panel4->Location = System::Drawing::Point(271, 0);
+			this->panel4->Name = L"panel4";
+			this->panel4->Size = System::Drawing::Size(265, 300);
+			this->panel4->TabIndex = 8;
+			// 
+			// panel5
+			// 
+			this->panel5->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
+			this->panel5->Controls->Add(this->panel6);
+			this->panel5->Controls->Add(this->panel8);
+			this->panel5->Location = System::Drawing::Point(300, 126);
+			this->panel5->Name = L"panel5";
+			this->panel5->Size = System::Drawing::Size(250, 250);
+			this->panel5->TabIndex = 10;
+			// 
+			// panel6
+			// 
+			this->panel6->Controls->Add(this->panel7);
+			this->panel6->Location = System::Drawing::Point(268, 0);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(265, 300);
+			this->panel6->TabIndex = 9;
+			// 
+			// panel7
+			// 
+			this->panel7->Location = System::Drawing::Point(271, 0);
+			this->panel7->Name = L"panel7";
+			this->panel7->Size = System::Drawing::Size(265, 300);
+			this->panel7->TabIndex = 8;
+			// 
+			// panel8
+			// 
+			this->panel8->Location = System::Drawing::Point(271, 0);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(265, 300);
+			this->panel8->TabIndex = 8;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(3, 39);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(185, 91);
+			this->label1->TabIndex = 10;
+			this->label1->Text = L"Здесь должна была \r\n\r\nбыть картинка либо текст \r\n\r\nРазработчик мал и глуп,\r\n\r\n не"
+				L" видал большших фреймворков ";
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click_1);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(840, 601);
+			this->ClientSize = System::Drawing::Size(824, 562);
+			this->Controls->Add(this->panel5);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->button_info);
 			this->Controls->Add(this->button_exit);
-			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Controls->Add(this->menuStrip1);
+			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->MaximumSize = System::Drawing::Size(840, 601);
 			this->MinimumSize = System::Drawing::Size(840, 601);
 			this->Name = L"MyForm";
-			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Театры города Сыктывкар (информация о представлениях)";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
+			this->panel3->ResumeLayout(false);
+			this->panel5->ResumeLayout(false);
+			this->panel6->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void button_download_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button_delet_Click(System::Object^ sender, System::EventArgs^ e);
 
-     private:System::Void searchTextBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
+	private: System::Void button_search_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void button_update_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button_info_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void button_delet_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void button_search_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void ToolTip_Popup(System::Object^ sender, System::Windows::Forms::PopupEventArgs^ e);
 
-private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e);
-
-private: System::Void button_info_Click(System::Object ^ sender, System::EventArgs ^ e);
-
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+	
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
