@@ -48,16 +48,21 @@ namespace Laba4 {
 
 
 
-	private: System::Windows::Forms::ToolTip^ ToolTip;
-	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Panel^ panel3;
-	private: System::Windows::Forms::Panel^ panel4;
-	private: System::Windows::Forms::Panel^ panel2;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Panel^ panel5;
-	private: System::Windows::Forms::Panel^ panel6;
-	private: System::Windows::Forms::Panel^ panel7;
-	private: System::Windows::Forms::Panel^ panel8;
+
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::ToolTip^ toolTip2;
+	private: System::Windows::Forms::ToolTip^ toolTip1;
+	private: System::Windows::Forms::ToolTip^ toolTip3;
+	private: System::Windows::Forms::ToolTip^ toolTip4;
+
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -76,6 +81,7 @@ namespace Laba4 {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
@@ -83,25 +89,16 @@ namespace Laba4 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
 			this->button_info = (gcnew System::Windows::Forms::Button());
-			this->ToolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
-			this->panel6 = (gcnew System::Windows::Forms::Panel());
-			this->panel7 = (gcnew System::Windows::Forms::Panel());
-			this->panel8 = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip2 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip3 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip4 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->groupBox1->SuspendLayout();
-			this->panel1->SuspendLayout();
-			this->panel3->SuspendLayout();
-			this->panel5->SuspendLayout();
-			this->panel6->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"menuStrip1.BackgroundImage")));
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(824, 24);
@@ -115,6 +112,7 @@ namespace Laba4 {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"groupBox1.BackgroundImage")));
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Location = System::Drawing::Point(13, 0);
@@ -132,6 +130,7 @@ namespace Laba4 {
 			this->button2->Size = System::Drawing::Size(156, 54);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Представления";
+			this->toolTip2->SetToolTip(this->button2, L"При нажатии, предоставляет данные о репертуаре театров в Коми.");
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -142,6 +141,7 @@ namespace Laba4 {
 			this->button1->Size = System::Drawing::Size(156, 54);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Информация о театрах";
+			this->toolTip1->SetToolTip(this->button1, L"При нажатии, предоставляется список всех театров.");
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -152,6 +152,7 @@ namespace Laba4 {
 			this->button_exit->Size = System::Drawing::Size(127, 31);
 			this->button_exit->TabIndex = 5;
 			this->button_exit->Text = L"Выйти из программы";
+			this->toolTip3->SetToolTip(this->button_exit, L"При нажатии, закрывает программу.");
 			this->button_exit->UseVisualStyleBackColor = true;
 			this->button_exit->Click += gcnew System::EventHandler(this, &MyForm::button_exit_Click);
 			// 
@@ -162,112 +163,29 @@ namespace Laba4 {
 			this->button_info->Size = System::Drawing::Size(176, 31);
 			this->button_info->TabIndex = 6;
 			this->button_info->Text = L"Информация о программе";
+			this->toolTip4->SetToolTip(this->button_info, L"При нажатии, предоставляет информацию о программе.");
 			this->button_info->UseVisualStyleBackColor = true;
 			this->button_info->Click += gcnew System::EventHandler(this, &MyForm::button_info_Click);
-			// 
-			// ToolTip
-			// 
-			this->ToolTip->Popup += gcnew System::Windows::Forms::PopupEventHandler(this, &MyForm::ToolTip_Popup);
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::Highlight;
-			this->panel1->Controls->Add(this->label1);
-			this->panel1->Controls->Add(this->panel3);
-			this->panel1->Controls->Add(this->panel2);
-			this->panel1->Location = System::Drawing::Point(53, 126);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(250, 250);
-			this->panel1->TabIndex = 7;
-			// 
-			// panel2
-			// 
-			this->panel2->Location = System::Drawing::Point(271, 0);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(265, 300);
-			this->panel2->TabIndex = 8;
-			// 
-			// panel3
-			// 
-			this->panel3->Controls->Add(this->panel4);
-			this->panel3->Location = System::Drawing::Point(268, 0);
-			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(265, 300);
-			this->panel3->TabIndex = 9;
-			// 
-			// panel4
-			// 
-			this->panel4->Location = System::Drawing::Point(271, 0);
-			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(265, 300);
-			this->panel4->TabIndex = 8;
-			// 
-			// panel5
-			// 
-			this->panel5->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
-			this->panel5->Controls->Add(this->panel6);
-			this->panel5->Controls->Add(this->panel8);
-			this->panel5->Location = System::Drawing::Point(300, 126);
-			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(250, 250);
-			this->panel5->TabIndex = 10;
-			// 
-			// panel6
-			// 
-			this->panel6->Controls->Add(this->panel7);
-			this->panel6->Location = System::Drawing::Point(268, 0);
-			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(265, 300);
-			this->panel6->TabIndex = 9;
-			// 
-			// panel7
-			// 
-			this->panel7->Location = System::Drawing::Point(271, 0);
-			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(265, 300);
-			this->panel7->TabIndex = 8;
-			// 
-			// panel8
-			// 
-			this->panel8->Location = System::Drawing::Point(271, 0);
-			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(265, 300);
-			this->panel8->TabIndex = 8;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(3, 39);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(185, 91);
-			this->label1->TabIndex = 10;
-			this->label1->Text = L"Здесь должна была \r\n\r\nбыть картинка либо текст \r\n\r\nРазработчик мал и глуп,\r\n\r\n не"
-				L" видал большших фреймворков ";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click_1);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(824, 562);
-			this->Controls->Add(this->panel5);
-			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->button_info);
 			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->menuStrip1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->MaximumSize = System::Drawing::Size(840, 601);
 			this->MinimumSize = System::Drawing::Size(840, 601);
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Театры города Сыктывкар (информация о представлениях)";
 			this->groupBox1->ResumeLayout(false);
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
-			this->panel3->ResumeLayout(false);
-			this->panel5->ResumeLayout(false);
-			this->panel6->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -292,6 +210,8 @@ private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

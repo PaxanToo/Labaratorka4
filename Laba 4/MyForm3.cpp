@@ -57,11 +57,11 @@ System::Void Laba4::MyForm3::button1_Click(System::Object^ sender, System::Event
         return;
     }
 
-    String^ id = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
-    String^ name = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
-    String^ street = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
-    String^ phone = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
-    String^ sait = dataGridView1->Rows[index]->Cells[4]->Value->ToString();
+    
+    String^ name = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
+    String^ street = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
+    String^ phone = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
+    String^ sait = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
 
     //к бдшке подключаемся
     String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.mdb";
@@ -69,7 +69,7 @@ System::Void Laba4::MyForm3::button1_Click(System::Object^ sender, System::Event
 
     //запрос к бд
     dbConnection->Open();
-    String^ query = "INSERT INTO [Представления] VALUES ('" + id + "','" + name + "', '" + street + "', '" + phone + "', '" + sait + "')";
+    String^ query = "INSERT INTO [Представления] VALUES ('" + name + "', '" + street + "', '" + phone + "', '" + sait + "')";
     OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
 
     if (dbComand->ExecuteNonQuery() != 1)
@@ -85,43 +85,51 @@ System::Void Laba4::MyForm3::button1_Click(System::Object^ sender, System::Event
 System::Void Laba4::MyForm3::button2_Click(System::Object^ sender, System::EventArgs^ e)
 {
     if (dataGridView1->SelectedRows->Count != 1) {
-        MessageBox::Show("Выберите строкчку для удаления", "Кавабанга");
+        MessageBox::Show("Выберите строку для удаления", "Ошибка");
         return;
     }
 
     int index = dataGridView1->SelectedRows[0]->Index;
 
-    if (dataGridView1->Rows[index]->Cells[0]->Value == nullptr)
+    if (dataGridView1->Rows[index]->Cells[4]->Value == nullptr)
     {
-        MessageBox::Show("Что-то пошло не так!", "Ошибка!");
+        MessageBox::Show("Что-то пошло не так!", "Ошибка");
         return;
     }
 
-    String^ id = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
+    String^ id = dataGridView1->Rows[index]->Cells[4]->Value->ToString(); // Предполагаем, что ID находится в 5-м столбце (индекс 4).
 
-
-    //к бдшке подключаемся
+    // К бдшке подключаемся
     String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.mdb";
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
-    //запрос к бд
+    // Запрос к бд
     dbConnection->Open();
-    String^ query = "DELETE FROM [представления] WHERE id = " + id;
-    OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
+    String^ query = "DELETE FROM [Представления] WHERE [id театра] = " + id; // Используем правильное имя столбца
+    OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
 
+    try
+    {
+        int rowsAffected = dbCommand->ExecuteNonQuery();
+        if (rowsAffected > 0)
+        {
+            MessageBox::Show("Данные успешно удалены!", "Успешно");
 
-
-    if (dbComand->ExecuteNonQuery() != 1)
-        MessageBox::Show("Ошибка выполнения запроса!", "Ошибка");
-    else {
-        MessageBox::Show("Данные успешно удалены!", "Успешно");
-
-        dataGridView1->Rows->RemoveAt(index);
+            dataGridView1->Rows->RemoveAt(index);
+        }
+        else
+        {
+            MessageBox::Show("Данные не удалены. Проверьте правильность выбранной строки.", "Ошибка");
+        }
     }
-    dbConnection->Close();
+    catch (Exception^ ex)
+    {
+        MessageBox::Show("Ошибка выполнения запроса: " + ex->Message, "Ошибка");
+    }
 
-    return System::Void();
+    dbConnection->Close();
 }
+
 
 System::Void Laba4::MyForm3::button3_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -148,4 +156,9 @@ System::Void Laba4::MyForm3::button3_Click(System::Object^ sender, System::Event
 
     dbReader->Close();
     dbConnection->Close();
+}
+
+System::Void Laba4::MyForm3::button4_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    this->Close(); // закрывает окно
 }
