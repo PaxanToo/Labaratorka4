@@ -26,7 +26,7 @@ System::Void Laba4::MyForm3::Download_Click(System::Object^ sender, System::Even
     }
     else {
         while (dbReader->Read()) {
-            dataGridView1->Rows->Add(dbReader["Название представления"], dbReader["Жанр представления"], dbReader["Режиссёр"], dbReader["Звёздный исполнитель(актёр)"], dbReader["id театра"]);
+            dataGridView1->Rows->Add(dbReader["id"], dbReader["Название_представления"], dbReader["Жанр_представления"], dbReader["Режиссёр"], dbReader["Звёздный_исполнитель(актёр)"]);
         }
     }
 
@@ -37,40 +37,54 @@ System::Void Laba4::MyForm3::Download_Click(System::Object^ sender, System::Even
     return System::Void();
 }
 
+//добавление
 System::Void Laba4::MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
-    //проверка строк
+    // проверяем, что ток одну строку трогаем 
     if (dataGridView1->SelectedRows->Count != 1) {
-        MessageBox::Show("Выберите строкчку для добавления", "Кавабанга");
+        MessageBox::Show("Выберите строку для добавления", "Кавабанга");
         return;
     }
-
     int index = dataGridView1->SelectedRows[0]->Index;
 
-    //проверка данных
-    if (dataGridView1->Rows[index]->Cells[0]->Value == nullptr &&
-        dataGridView1->Rows[index]->Cells[1]->Value == nullptr &&
-        dataGridView1->Rows[index]->Cells[2]->Value == nullptr &&
-        dataGridView1->Rows[index]->Cells[3]->Value == nullptr &&
-        dataGridView1->Rows[index]->Cells[4]->Value == nullptr) {
-        MessageBox::Show("Не все данные введены!", "Ошибка!");
+    // проверка индекса на диапозон
+    if (index < 0 || index >= dataGridView1->Rows->Count) {
+        MessageBox::Show("Неверный индекс строки", "Ошибка");
         return;
     }
 
-    
-    String^ name = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
-    String^ street = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
-    String^ phone = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
-    String^ sait = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
+    // Проверяем, что все ячейки в выбранной строке заполнены
+/*Кароче ваще лафа оказывается, нужно было просто через цикл проверку заебенитб, начинаме с 1 так как 0 у нас это id он сам там вертиться как хочет поэтому его не проверяем
+* вот такие пироги
+*/
+    for (int i = 1; i <= 4; i++) {
+        if (dataGridView1->Rows[index]->Cells[i]->Value == nullptr ||
+            dataGridView1->Rows[index]->Cells[i]->Value->ToString() == "") {
+            MessageBox::Show("Не все данные введены!", "Ошибка!");
+            return;
+        }
+    }
 
-    //к бдшке подключаемся
+    // данные из ввыбраной строки лутаем 
+    String^ name = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
+    String^ street = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
+    String^ phone = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
+    String^ sait = dataGridView1->Rows[index]->Cells[4]->Value->ToString();
+
+    // подключаемся к бдшке
     String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.mdb";
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
-    //запрос к бд
     dbConnection->Open();
-    String^ query = "INSERT INTO [Представления] VALUES ('" + name + "', '" + street + "', '" + phone + "', '" + sait + "')";
+
+    // без id просим внести данные типо
+    String^ query = "INSERT INTO [Представления] ([Название_представления], [Жанр_представления], Режиссёр, [Звёздный_исполнитель(актёр)]) VALUES (?, ?, ?, ?)";
     OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
+
+    dbComand->Parameters->AddWithValue("?", name);
+    dbComand->Parameters->AddWithValue("?", street);
+    dbComand->Parameters->AddWithValue("?", phone);
+    dbComand->Parameters->AddWithValue("?", sait);
 
     if (dbComand->ExecuteNonQuery() != 1)
         MessageBox::Show("Ошибка выполнения запроса!", "Ошибка");
@@ -78,8 +92,6 @@ System::Void Laba4::MyForm3::button1_Click(System::Object^ sender, System::Event
         MessageBox::Show("Данные добавлены!", "Успешно");
 
     dbConnection->Close();
-
-    return System::Void();
 }
 
 System::Void Laba4::MyForm3::button2_Click(System::Object^ sender, System::EventArgs^ e)
@@ -91,13 +103,13 @@ System::Void Laba4::MyForm3::button2_Click(System::Object^ sender, System::Event
 
     int index = dataGridView1->SelectedRows[0]->Index;
 
-    if (dataGridView1->Rows[index]->Cells[4]->Value == nullptr)
+    if (dataGridView1->Rows[index]->Cells[1]->Value == nullptr)
     {
         MessageBox::Show("Что-то пошло не так!", "Ошибка");
         return;
     }
 
-    String^ id = dataGridView1->Rows[index]->Cells[4]->Value->ToString(); // Предполагаем, что ID находится в 5-м столбце (индекс 4).
+    String^ id = dataGridView1->Rows[index]->Cells[0]->Value->ToString(); // Предполагаем, что ID находится в 5-м столбце (индекс 4).
 
     // К бдшке подключаемся
     String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database.mdb";
@@ -105,7 +117,7 @@ System::Void Laba4::MyForm3::button2_Click(System::Object^ sender, System::Event
 
     // Запрос к бд
     dbConnection->Open();
-    String^ query = "DELETE FROM [Представления] WHERE [id театра] = " + id; // Используем правильное имя столбца
+    String^ query = "DELETE FROM [Представления] WHERE id = " + id; // Используем правильное имя столбца
     OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
 
     try
@@ -142,7 +154,7 @@ System::Void Laba4::MyForm3::button3_Click(System::Object^ sender, System::Event
     //запрос к бд
     dbConnection->Open();
     //ну тут поиск, команда выбора и всё плюсуем чтоб по каждому столбцу искало, то есть все свопадения 
-    String^ query = "SELECT * FROM [Представления] WHERE Название представления LIKE '%" + searchString + "%' OR Жанр представления LIKE '%" + searchString + "%' OR Режиссёр LIKE '%" + searchString + "%' OR Звёздный исполнитель(актёр) LIKE '%" + searchString + "%' OR id театра LIKE '%" + searchString + "%'";
+    String^ query = "SELECT * FROM [Представления] WHERE id LIKE '%" + searchString + "%' OR [Название_представления] LIKE '%" + searchString + "%' OR [Жанр_представления] LIKE '%" + searchString + "%' OR [Режиссёр] LIKE '%" + searchString + "%' OR [Звёздный_исполнитель(актёр)] LIKE '%" + searchString + "%'";
 
     OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
     OleDbDataReader^ dbReader = dbComand->ExecuteReader();
@@ -151,7 +163,7 @@ System::Void Laba4::MyForm3::button3_Click(System::Object^ sender, System::Event
 
     //то шо  нашли отображаем 
     while (dbReader->Read()) {
-        dataGridView1->Rows->Add(dbReader["Название_представления"], dbReader["Жанр_представления"], dbReader["Режиссёр"], dbReader["Звёздный_исполнитель(актёр)"], dbReader["id_театра"]);
+        dataGridView1->Rows->Add(dbReader["id"], dbReader["[Название_представления]"], dbReader["[Жанр_представления]"], dbReader["Режиссёр"], dbReader["[Звёздный_исполнитель(актёр)]"]);
     }
 
     dbReader->Close();

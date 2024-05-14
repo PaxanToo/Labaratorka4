@@ -62,11 +62,16 @@ namespace Laba4 {
 	private: System::Windows::Forms::ToolTip^ toolTip3;
 	private: System::Windows::Forms::ToolTip^ toolTip4;
 	private: System::Windows::Forms::ToolTip^ toolTip5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 
 
 
@@ -116,11 +121,11 @@ namespace Laba4 {
 			this->toolTip3 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->toolTip4 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->toolTip5 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -163,8 +168,8 @@ namespace Laba4 {
 				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+				this->Column5,
+					this->Column1, this->Column2, this->Column3, this->Column4
 			});
 			this->dataGridView1->Location = System::Drawing::Point(12, 75);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -211,6 +216,11 @@ namespace Laba4 {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm3::button4_Click);
 			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"id";
+			this->Column5->Name = L"Column5";
+			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"Название представления";
@@ -232,11 +242,6 @@ namespace Laba4 {
 			this->Column4->MinimumWidth = 100;
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 150;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"id";
-			this->Column5->Name = L"Column5";
 			// 
 			// MyForm3
 			// 
